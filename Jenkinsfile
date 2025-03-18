@@ -15,6 +15,14 @@ pipeline {
             }
         }
 
+        stage('Run container'){
+            steps{
+                script{
+                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
+                }
+            }
+        }
+
         stage('Push to dockerhub'){
             steps{
                 script{
@@ -25,13 +33,7 @@ pipeline {
             }
         }
 
-        stage('Run container'){
-            steps{
-                script{
-                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
-                }
-            }
-        }
+        
 
         stage('Test app') {
             steps{
