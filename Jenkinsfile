@@ -28,7 +28,7 @@ pipeline {
         stage('Run container'){
             steps{
                 script{
-                    sh 'docker run -d -p 5000:5000 --name flask-app .'
+                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
                 }
             }
         }
