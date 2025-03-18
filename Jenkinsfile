@@ -18,7 +18,7 @@ pipeline {
         stage('Push to dockerhub'){
             steps{
                 script{
-                    docker.withRegistry('https://index.docker.io/v1', 'dockerhub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
                         dockerImage.push('latest')
                     }
                 }
@@ -28,7 +28,7 @@ pipeline {
         stage('Run container'){
             steps{
                 script{
-                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
+                    sh 'docker run -d -p 5000:5000 --name flask-app .'
                 }
             }
         }
