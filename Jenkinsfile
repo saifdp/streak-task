@@ -18,28 +18,28 @@ pipeline {
         stage('Push to dockerhub'){
             steps{
                 script{
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
                         dockerImage.push('latest')
                     }
                 }
             }
         }
 
-        // stage('Run container'){
-        //     steps{
-        //         script{
-        //             sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
-        //         }
-        //     }
-        // }
+        stage('Run container'){
+            steps{
+                script{
+                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
+                }
+            }
+        }
 
-        // stage('Test app') {
-        //     steps{
-        //         script{
-        //             sh 'curl -f https://localhost:5000'
-        //         }
-        //     }
-        // }
+        stage('Test app') {
+            steps{
+                script{
+                    sh 'curl -f https://localhost:5000'
+                }
+            }
+        }
     }
 
     post {
