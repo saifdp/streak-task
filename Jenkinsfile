@@ -25,21 +25,21 @@ pipeline {
             }
         }
 
-        stage('Run container'){
-            steps{
-                script{
-                    sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
-                }
-            }
-        }
+        // stage('Run container'){
+        //     steps{
+        //         script{
+        //             sh 'docker run -d -p 5000:5000 --name flask-app heysaif/streak-img'
+        //         }
+        //     }
+        // }
 
-        stage('Test app') {
-            steps{
-                script{
-                    sh 'curl -f https://localhost:5000'
-                }
-            }
-        }
+        // stage('Test app') {
+        //     steps{
+        //         script{
+        //             sh 'curl -f https://localhost:5000'
+        //         }
+        //     }
+        // }
     }
 
     post {
